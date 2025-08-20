@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  title = 'My Angular App';
+  title = 'MY app';
 
   navLinks = [
     { label: 'Home', url: '/' },
