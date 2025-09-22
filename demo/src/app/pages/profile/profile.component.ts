@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input, output,} from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
+import { User } from './models/user.interface';
 
 @Component({
   selector: 'app-profile',
@@ -9,29 +10,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  title = 'My Angular App';
-
-  navLinks = [
-    { label: 'Home', url: '/' },
-    { label: 'About', url: '/about' }
-  ];
-
-  formData = {
-    name: '',
-    email: '',
-    message: '',
-    gender: 'male',
-    subscribe: false
-  };
-  people = [
-    { name: 'Alice', age: 25 },
-    { name: 'Bob', age: 32 }
-  ];
-
-  steps = ['Install Angular CLI', 'Create Project', 'Serve App'];
-  items = ['Item 1', 'Item 2', 'Item 3'];
-
-  onSubmit() {
-    console.log('Form submitted   :', this.formData);
-  }
+user =input.required<User>();
+notify = output<string>();
+onClick() {
+  this.notify.emit(`Clicked on ${this.user().name} (ID: ${this.user().id})`);
+}
 }

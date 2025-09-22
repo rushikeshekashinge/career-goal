@@ -1,0 +1,23 @@
+<div class="user-list-container">
+    <h2>User Profiles</h2>
+    
+    <div class="notification-panel" [class.show]="lastNotification()">
+      <p>{{ lastNotification() }}</p>
+    </div>
+    
+    <div class="profiles-grid">
+      @for (user of users(); track user.id) {
+        <app-profile 
+          [user]="user" 
+          (notify)="onUserNotification($event)">
+        </app-profile>
+      } @empty {
+        <p class="no-users">No users available</p>
+      }
+    </div>
+    
+    <div class="controls">
+      <button (click)="addRandomUser()" class="add-btn">Add Random User</button>
+      <button (click)="clearUsers()" class="clear-btn">Clear All Users</button>
+    </div>
+  </div>
